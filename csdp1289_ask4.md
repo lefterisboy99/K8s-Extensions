@@ -34,13 +34,16 @@ Askisi 1
         - ct
 
 a)
- kubectl apply -f ask4_1.yaml
+    kubectl apply -f ask4_1.yaml
+    
 b) 
   kubectl apply -f apple.yaml
+  
 c) 
-  kubectl get ct -o yaml
+    kubectl get ct -o yaml
+  
 d) 
-  kubectl get fruit #(h fruits)
+    kubectl get fruit #(h fruits)
 
 
 Askisi 2
