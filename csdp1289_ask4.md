@@ -37,7 +37,7 @@ a)
     kubectl apply -f ask4_1.yaml
     
 b) 
-  kubectl apply -f apple.yaml
+    kubectl apply -f apple.yaml
   
 c) 
     kubectl get ct -o yaml
