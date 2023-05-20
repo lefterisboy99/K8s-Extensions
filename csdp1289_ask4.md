@@ -66,64 +66,64 @@ a)
 
 b)
 
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: flask
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
-        app: flask
-    template:
+      apiVersion: apps/v1
+      kind: Deployment
       metadata:
-        labels:
-          app: flask
+        name: flask
       spec:
-        serviceAccountName: greeting-controller-sa
-        containers:
-        - name: flask
-          image: lefterisboy99/ask4_2:latest
-          resources:
-            limits:
-              cpu: "200m"
-              memory: "128Mi"
-          env:
-          - name: MESSAGE
-            value: "Hello, world!"
+        replicas: 1
+        selector:
+          matchLabels:
+            app: flask
+        template:
+          metadata:
+            labels:
+              app: flask
+          spec:
+            serviceAccountName: greeting-controller-sa
+            containers:
+            - name: flask
+              image: lefterisboy99/ask4_2:latest
+              resources:
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"
+              env:
+              - name: MESSAGE
+                value: "Hello, world!"
 
-  ---
+      ---
 
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: greeting-controller-sa
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: greeting-controller-sa
 
-  ---
+      ---
 
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    name: pod-reader-role
-  rules:
-  - apiGroups: ["*"]
-    resources: ["*"]
-    verbs: ["*"]
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: pod-reader-role
+      rules:
+      - apiGroups: ["*"]
+        resources: ["*"]
+        verbs: ["*"]
 
-  ---
+      ---
 
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: pod-reader-role-binding
-  subjects:
-  - kind: ServiceAccount
-    name: greeting-controller-sa
-    namespace: default
-  roleRef:
-    kind: ClusterRole
-    name: pod-reader-role
-    apiGroup: rbac.authorization.k8s.io
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      metadata:
+        name: pod-reader-role-binding
+      subjects:
+      - kind: ServiceAccount
+        name: greeting-controller-sa
+        namespace: default
+      roleRef:
+        kind: ClusterRole
+        name: pod-reader-role
+        apiGroup: rbac.authorization.k8s.io
 
 ekana kubectl logs kai to onoma tou container kai m evgale ta logs tou kai oti dexete minima apo to crd hello-to-all
 
