@@ -1,37 +1,37 @@
 Askisi 1
 
-  apiVersion: apiextensions.k8s.io/v1
-  kind: CustomResourceDefinition
-  metadata:
-    name: fruits.hy548.csd.uoc.gr
-  spec:
-    group: hy548.csd.uoc.gr
-    versions:
-      - name: v1
-        # Each version can be enabled/disabled by Served flag.
-        served: true
-        # One and only one version must be marked as the storage version.
-        storage: true
-        schema:
-          openAPIV3Schema:
-            type: object
-            properties:
-              spec:
-                type: object
-                properties:
-                  origin:
-                    type: string
-                  count:
-                    type: integer
-                  grams:
-                    type: integer
-    scope: Namespaced
-    names:
-      plural: fruits
-      singular: fruit
-      kind: Fruit
-      shortNames:
-      - ct
+    apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      name: fruits.hy548.csd.uoc.gr
+    spec:
+      group: hy548.csd.uoc.gr
+      versions:
+        - name: v1
+          # Each version can be enabled/disabled by Served flag.
+          served: true
+          # One and only one version must be marked as the storage version.
+          storage: true
+          schema:
+            openAPIV3Schema:
+              type: object
+              properties:
+                spec:
+                  type: object
+                  properties:
+                    origin:
+                      type: string
+                    count:
+                      type: integer
+                    grams:
+                      type: integer
+      scope: Namespaced
+      names:
+        plural: fruits
+        singular: fruit
+        kind: Fruit
+        shortNames:
+        - ct
 
 a)
  kubectl apply -f ask4_1.yaml
