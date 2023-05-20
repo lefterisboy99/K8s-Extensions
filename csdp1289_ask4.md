@@ -58,6 +58,7 @@ a)
   RUN apk --update add python3
   RUN apk add --update python3 py3-pip
   RUN pip install --upgrade pip
+  
   RUN pip install -r /hy548/crds/requirements.txt
   RUN apk add curl
   RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
