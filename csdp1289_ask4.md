@@ -50,20 +50,19 @@ Askisi 2
 
 a)
 
-  FROM alpine:latest
+      FROM alpine:latest
 
-  RUN apk update
-  RUN apk add git
-  RUN git clone https://github.com/chazapis/hy548
-  RUN apk --update add python3
-  RUN apk add --update python3 py3-pip
-  RUN pip install --upgrade pip
-  
-  RUN pip install -r /hy548/crds/requirements.txt
-  RUN apk add curl
-  RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-  RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-  CMD ["python3", "/hy548/crds/controller.py"]
+      RUN apk update
+      RUN apk add git
+      RUN git clone https://github.com/chazapis/hy548
+      RUN apk --update add python3
+      RUN apk add --update python3 py3-pip
+      RUN pip install --upgrade pip
+      RUN pip install -r /hy548/crds/requirements.txt
+      RUN apk add curl
+      RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+      CMD ["python3", "/hy548/crds/controller.py"]
 
 b)
 
